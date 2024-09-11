@@ -1,49 +1,79 @@
-import {Footer} from "@/components/footer/footer";
 import {Container} from "@/components/layout/container/container";
+import {models} from "@/data/models";
+import {CardModels} from "@/components/layout/card-models";
 
 export default function Home() {
+
+    function renderModels() {
+        return models.map(model => {
+            return (
+                <CardModels model={model}/>
+            )
+        })
+    }
 
     return (
         <main className={`w-full`}>
             <Container>
-                <div className={`flex`}>
+                <h1 className={`text-2xl font-semibold  `}>ESMALTAÇÃO EM GEL</h1>
+                <div className={`grid grid-cols-2 `}>
                     <div className={`min-w-[30rem] max-w-[30rem] min-h-[30rem] max-h-[30rem]`}>
                         <img
-                            className="w-full h-full object-cover"
+                            className="w-full h-full object-cover rounded-md"
                             src="/nail_model_1.jpg"
                             alt="Modelo 1"/>
                     </div>
-
-                    <div className={`flex flex-col p-10 flex-wrap gap-5`}>
-                        <h1 className={`text-3xl font-bold`}>Esmaltação em gel</h1>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
-                            been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
-                            galley of type and scrambled it to make a type specimen book. It has survived not only five
-                            centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
-                            It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum
-                            passages, and more recently with desktop publishing software like Aldus PageMaker including
-                            versions of Lorem Ipsum.</p>
+                    <div className={`grid grid-cols-1 max-h-[30rem] gap-5 overflow-y-scroll`}>
+                        {renderModels()}
                     </div>
                 </div>
 
-                <div className={`flex`}>
-                    <div className={`flex flex-col p-10 flex-wrap gap-5`}>
-                        <h1 className={`text-3xl font-bold`}>Esmaltação simples</h1>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
-                            been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
-                            galley of type and scrambled it to make a type specimen book. It has survived not only five
-                            centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
-                            It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum
-                            passages, and more recently with desktop publishing software like Aldus PageMaker including
-                            versions of Lorem Ipsum.</p>
+                <div className={`flex gap-5 items-center justify-center overflow-x-scroll mt-10`}>
+                    <div className="card glass w-96">
+                        <figure>
+                            <img
+                                src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+                                alt="car!"/>
+                        </figure>
+                        <div className="card-body">
+                            <h2 className="card-title">Life hack</h2>
+                            <p>How to park your car at your garage?</p>
+                            <div className="card-actions justify-end">
+                                <button className="btn btn-primary">Learn now!</button>
+                            </div>
+                        </div>
                     </div>
 
-                    <div className={`min-w-[30rem] max-w-[30rem] min-h-[30rem] max-h-[30rem] bg-blue-200`}>
-                        <img
-                            className="w-full h-full object-cover"
-                            src="/nail_model_2.jpg"
-                            alt="Modelo 1"/>
+                    <div className="card glass w-96">
+                        <figure>
+                            <img
+                                src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+                                alt="car!"/>
+                        </figure>
+                        <div className="card-body">
+                            <h2 className="card-title">Life hack</h2>
+                            <p>How to park your car at your garage?</p>
+                            <div className="card-actions justify-end">
+                                <button className="btn btn-primary">Learn now!</button>
+                            </div>
+                        </div>
                     </div>
+
+                    <div className="card glass w-96">
+                        <figure>
+                            <img
+                                src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+                                alt="car!"/>
+                        </figure>
+                        <div className="card-body">
+                            <h2 className="card-title">Life hack</h2>
+                            <p>How to park your car at your garage?</p>
+                            <div className="card-actions justify-end">
+                                <button className="btn btn-primary">Learn now!</button>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </Container>
         </main>

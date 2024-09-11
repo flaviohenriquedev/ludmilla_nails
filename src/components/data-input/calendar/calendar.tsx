@@ -7,6 +7,7 @@ import {openModal} from "@/functions/utils";
 import {Label} from "@/components/data-input/label/label";
 import {InputText} from "@/components/data-input/input/input-text";
 import {useEffect, useState} from "react";
+import {LineContent} from "@/components/data-input/line-content/line-content";
 
 const diasSemana: { descricao: string }[] = [
     {descricao: 'Domingo'},
@@ -135,15 +136,15 @@ export function Calendar() {
 
             <Modal idModal={`modalData`}>
                 <form className={`flex flex-col gap-10`}>
+                    <LineContent>
+                        <Label label={`Nome Completo`}>
+                            <InputText/>
+                        </Label>
 
-                    <Label label={`Nome Completo`}>
-                        <InputText/>
-                    </Label>
-
-                    <Label label={`Telefone`}>
-                        <InputText/>
-                    </Label>
-
+                        <Label label={`Telefone`}>
+                            <InputText/>
+                        </Label>
+                    </LineContent>
                     <button className={`btn btn-primary btn-sm w-auto`}>Agendar</button>
                 </form>
             </Modal>

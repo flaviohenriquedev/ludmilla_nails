@@ -1,6 +1,7 @@
-import {IoIosArrowBack, IoIosArrowForward} from "react-icons/io";
+import {IoIosArrowBack, IoIosArrowForward, IoMdClose} from "react-icons/io";
 
 export const icons = {
     "seta-esquerda": <IoIosArrowBack/>,
-    "seta-direita": <IoIosArrowForward/>
+    "seta-direita": <IoIosArrowForward/>,
+    "fechar": <IoMdClose />
 }
