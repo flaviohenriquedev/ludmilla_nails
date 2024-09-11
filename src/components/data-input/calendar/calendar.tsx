@@ -6,6 +6,7 @@ import {Modal} from "@/components/data-display/modal/modal";
 import {openModal} from "@/functions/utils";
 import {Label} from "@/components/data-input/label/label";
 import {InputText} from "@/components/data-input/input/input-text";
+import {useEffect, useState} from "react";
 
 const diasSemana: { descricao: string }[] = [
     {descricao: 'Domingo'},
@@ -18,34 +19,34 @@ const diasSemana: { descricao: string }[] = [
 ];
 
 export function Calendar() {
+
+    const [actualDay, setActualDay] = useState<Date>(new Date);
+
+    useEffect(() => {
+        setActualDay(new Date());
+    }, [])
+
     const getDaysInCurrentMonth = (): number[] => {
-        const currentDate = new Date();
-        const year = currentDate.getFullYear();
-        const month = currentDate.getMonth();
+        const year = actualDay.getFullYear();
+        const month = actualDay.getMonth();
         const daysInMonth = new Date(year, month + 1, 0).getDate();
         return Array.from({length: daysInMonth}, (_, i) => i + 1);
     };
 
     const getFirstDayOfMonth = (): number => {
-        const currentDate = new Date();
-        const year = currentDate.getFullYear();
-        const month = currentDate.getMonth();
+        const year = actualDay.getFullYear();
+        const month = actualDay.getMonth();
         return new Date(year, month, 1).getDay(); // Retorna o índice do dia da semana (0-6)
     };
 
     const getDaysFromPreviousMonth = (firstDayIndex: number): number[] => {
-        const currentDate = new Date();
-        const year = currentDate.getFullYear();
-        const month = currentDate.getMonth();
+        const year = actualDay.getFullYear();
+        const month = actualDay.getMonth();
         const daysInPreviousMonth = new Date(year, month, 0).getDate();
         return Array.from(
             {length: firstDayIndex},
             (_, i) => daysInPreviousMonth - firstDayIndex + i + 1
         );
-    };
-
-    const getDaysFromNextMonth = (remainingDays: number): number[] => {
-        return Array.from({length: remainingDays}, (_, i) => i + 1);
     };
 
     function renderDiasSemana() {
@@ -61,20 +62,18 @@ export function Calendar() {
         const firstDayIndex = getFirstDayOfMonth(); // Índice do primeiro dia do mês
         const daysFromPreviousMonth = getDaysFromPreviousMonth(firstDayIndex);
 
-        const totalCells = 42; // 7 dias da semana * 6 semanas visíveis no calendário
-        const remainingCells =
-            totalCells - daysFromPreviousMonth.length - daysInCurrentMonth.length;
-        const daysFromNextMonth = getDaysFromNextMonth(remainingCells);
-
         return [
             ...daysFromPreviousMonth.map(day => (
-                <DataMes day={day} disabled={true}/>
+                <DataMes
+                    day={day}
+                    disabled={true}/>
             )),
             ...daysInCurrentMonth.map(day => (
-                <DataMes day={day} onClick={() => openModal(`modalData`)}/>
-            )),
-            ...daysFromNextMonth.map(day => (
-                <DataMes day={day} disabled={true}/>
+                <DataMes
+                    highlight={day === actualDay.getDate()}
+                    disabled={day < actualDay.getDate()}
+                    day={day}
+                    onClick={() => openModal(`modalData`)}/>
             ))
         ];
     }
@@ -108,10 +107,6 @@ export function Calendar() {
                     </div>
                 </header>
                 <div className={`
-                shadow
-                ring-1
-                ring-black
-                ring-opacity-5
                 lg:flex
                 lg:flex-auto
                 lg:flex-col
@@ -142,11 +137,11 @@ export function Calendar() {
                 <form className={`flex flex-col gap-10`}>
 
                     <Label label={`Nome Completo`}>
-                        <InputText />
+                        <InputText/>
                     </Label>
 
                     <Label label={`Telefone`}>
-                        <InputText />
+                        <InputText/>
                     </Label>
 
                     <button className={`btn btn-primary btn-sm w-auto`}>Agendar</button>
