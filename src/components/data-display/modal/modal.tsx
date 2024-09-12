@@ -9,7 +9,7 @@ interface Props extends ChildrenProps {
 export function Modal({idModal, children}: Props) {
     return (
         <dialog id={idModal}
-                className="modal">
+                className="modal p-24">
             <div className="flex flex-col modal-box">
                 <div
                     className={`flex w-full items-center justify-end hover:cursor-pointer`}

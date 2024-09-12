@@ -8,7 +8,7 @@ export function Logo() {
 
     return (
         <div onClick={() => router.push('/')}
-            className={`border border-transparent p-2 rounded-lg hover:cursor-pointer hover:border-base-content`}>
+            className={`border border-transparent p-2 rounded-lg hover:cursor-pointer`}>
             <label id={`logo`}
                    className={`text-3xl text-base-content hover:cursor-pointer`}>
                 <span className={`font-bold`}>LUD</span><i>Nails</i>
