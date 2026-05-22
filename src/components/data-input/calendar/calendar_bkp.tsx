@@ -238,7 +238,7 @@ export function CalendarBKP() {
                             <ol className="mt-2">
                                 <li>
                                     <a href="#" className="group flex">
-                                        <p className="flex-auto truncate font-medium text-gray-900 group-hover:text-indigo-600">Sam's
+                                        <p className="flex-auto truncate font-medium text-gray-900 group-hover:text-indigo-600">Sam&apos;s
                                             birthday party</p>
                                         <time dateTime="2022-01-25T14:00"
                                               className="ml-3 hidden flex-none text-gray-500 group-hover:text-indigo-600 xl:block">2PM

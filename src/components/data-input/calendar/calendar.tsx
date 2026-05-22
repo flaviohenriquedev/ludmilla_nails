@@ -6,7 +6,7 @@ import {Modal} from "@/components/data-display/modal/modal";
 import {openModal} from "@/functions/utils";
 import {Label} from "@/components/data-input/label/label";
 import {InputText} from "@/components/data-input/input/input-text";
-import {useCallback, useEffect, useState} from "react";
+import {useEffect, useState} from "react";
 import {LineContent} from "@/components/data-input/line-content/line-content";
 import {Select} from "@/components/data-input/select/select";
 
@@ -65,7 +65,7 @@ export function Calendar() {
         openModal(`modalData`);
     }
 
-    const renderDias = useCallback(() => {
+    function renderDias() {
         const datasDoMesCorrente = getDatasDoMesCorrente();
         const indexPrimeiroDiaDaSemana = getDiaDaSemanaDoPrimeiroDiaDoMesCorrente();
         const datasDoMesAnterior = getDatasDoMesAnterior(indexPrimeiroDiaDaSemana);
@@ -73,17 +73,19 @@ export function Calendar() {
         return [
             ...datasDoMesAnterior.map(data => (
                 <DataMes
+                    key={`previous-${data.toISOString()}`}
                     data={data}
                     monthDescription={monthDescription[data.getMonth()].descricao}
                     onClick={() => onClickDataMes(data)}/>
             )),
             ...datasDoMesCorrente.map(data => (
                 <DataMes
+                    key={`current-${data.toISOString()}`}
                     data={data}
                     onClick={() => onClickDataMes(data)}/>
             ))
         ];
-    }, [dataCorrente])
+    }
 
     const alterActualDate = (month?: number, operator?: Operator) => {
         const monthToOperation = month ?? 0;
