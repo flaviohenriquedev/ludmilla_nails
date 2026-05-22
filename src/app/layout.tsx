@@ -27,6 +27,7 @@ const menuNavegacao: { descricao: string, url: string }[] = [
     {descricao: 'home', url: '/'},
     {descricao: 'modelos', url: '/modelos'},
     {descricao: 'agendamento', url: '/agendamento'},
+    {descricao: 'gommo', url: '/gommo'},
 ];
 
 export default function RootLayout({

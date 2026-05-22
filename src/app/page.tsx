@@ -7,7 +7,7 @@ export default function Home() {
     function renderModels() {
         return models.map(model => {
             return (
-                <CardModels model={model}/>
+                <CardModels key={model.title} model={model}/>
             )
         })
     }
